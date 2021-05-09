@@ -129,7 +129,7 @@ class AI {
               this.positions[3] = true;
               this.lastMove = "3";
               break;
-            case player.lastMove === "7":
+            case player.lastMove === "7" || player.lastMove === "8":
               this.positions[1] = true;
               this.lastMove = "1";
               break;
@@ -140,10 +140,6 @@ class AI {
             case player.lastMove === "6":
               this.positions[2] = true;
               this.lastMove = "2";
-              break;
-            case player.lastMove === "8":
-              this.positions[1] = true;
-              this.lastMove = "1";
               break;
             default:
               break;
