@@ -86,26 +86,22 @@ class AI {
           } else {
             switch (true) {
               case (player.prevMove === "0" && player.lastMove === "2") ||
-                player.prevMove === "2" ||
-                player.lastMove === "0":
+                (player.prevMove === "2" && player.lastMove === "0"):
                 this.positions[1] = true;
                 this.lastMove = "1";
                 break;
               case (player.prevMove === "2" && player.lastMove === "8") ||
-                player.prevMove === "8" ||
-                player.lastMove === "2":
+                (player.prevMove === "8" && player.lastMove === "2"):
                 this.positions[3] = true;
                 this.lastMove = "3";
                 break;
               case (player.prevMove === "0" && player.lastMove === "6") ||
-                player.prevMove === "6" ||
-                player.lastMove === "0":
+                (player.prevMove === "6" && player.lastMove === "0"):
                 this.positions[5] = true;
                 this.lastMove = "5";
                 break;
               case (player.prevMove === "6" && player.lastMove === "8") ||
-                player.prevMove === "8" ||
-                player.lastMove === "6":
+                (player.prevMove === "8" && player.lastMove === "6"):
                 this.positions[7] = true;
                 this.lastMove = "7";
                 break;
@@ -129,7 +125,7 @@ class AI {
               this.positions[3] = true;
               this.lastMove = "3";
               break;
-            case player.lastMove === "7" || player.lastMove === "8":
+            case player.lastMove === "7":
               this.positions[1] = true;
               this.lastMove = "1";
               break;
@@ -137,7 +133,7 @@ class AI {
               this.positions[6] === true;
               this.lastMove = "6";
               break;
-            case player.lastMove === "6":
+            case player.lastMove === "6" || player.lastMove === "8":
               this.positions[2] = true;
               this.lastMove = "2";
               break;
