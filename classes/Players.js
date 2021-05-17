@@ -68,21 +68,50 @@ class AI {
               case (player.prevMove === "0" && player.lastMove === "1") ||
                 (player.prevMove === "8" && player.lastMove === "3"):
                 this.positions[2] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "2";
                 break;
               case (player.prevMove === "0" && player.lastMove === "5") ||
                 (player.prevMove === "8" && player.lastMove === "7"):
                 this.positions[6] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "6";
                 break;
               case (player.prevMove === "2" && player.lastMove === "1") ||
                 (player.prevMove === "6" && player.lastMove === "5"):
                 this.positions[0] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "0";
                 break;
               case (player.prevMove === "2" && player.lastMove === "3") ||
                 (player.prevMove === "6" && player.lastMove === "7"):
                 this.positions[8] = true;
+                this.prevMove = this.lastMove;
+                this.lastMove = "8";
+                break;
+              // Weird Cases
+              case (player.prevMove === "0" && player.lastMove === "3") ||
+                (player.prevMove === "8" && player.lastMove === "1"):
+                this.positions[2] = true;
+                this.prevMove = this.lastMove;
+                this.lastMove = "2";
+                break;
+              case (player.prevMove === "0" && player.lastMove === "7") ||
+                (player.prevMove === "8" && player.lastMove === "5"):
+                this.positions[6] = true;
+                this.prevMove = this.lastMove;
+                this.lastMove = "6";
+                break;
+              case (player.prevMove === "2" && player.lastMove === "5") ||
+                (player.prevMove === "6" && player.lastMove === "1"):
+                this.positions[0] = true;
+                this.prevMove = this.lastMove;
+                this.lastMove = "0";
+                break;
+              case (player.prevMove === "2" && player.lastMove === "7") ||
+                (player.prevMove === "6" && player.lastMove === "3"):
+                this.positions[8] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "8";
                 break;
               default:
@@ -94,25 +123,30 @@ class AI {
               case (player.prevMove === "0" && player.lastMove === "2") ||
                 (player.prevMove === "2" && player.lastMove === "0"):
                 this.positions[1] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "1";
                 break;
               case (player.prevMove === "2" && player.lastMove === "8") ||
                 (player.prevMove === "8" && player.lastMove === "2"):
                 this.positions[3] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "3";
                 break;
               case (player.prevMove === "0" && player.lastMove === "6") ||
                 (player.prevMove === "6" && player.lastMove === "0"):
                 this.positions[5] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "5";
                 break;
               case (player.prevMove === "6" && player.lastMove === "8") ||
                 (player.prevMove === "8" && player.lastMove === "6"):
                 this.positions[7] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "7";
                 break;
               default:
                 this.positions[1] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "1";
                 break;
             }
@@ -122,26 +156,32 @@ class AI {
           switch (true) {
             case player.lastMove === "1":
               this.positions[7] = true;
+              this.prevMove = this.lastMove;
               this.lastMove = "7";
               break;
             case player.lastMove === "3":
               this.positions[5] = true;
+              this.prevMove = this.lastMove;
               this.lastMove = "5";
               break;
             case player.lastMove === "5":
               this.positions[3] = true;
+              this.prevMove = this.lastMove;
               this.lastMove = "3";
               break;
             case player.lastMove === "7":
               this.positions[1] = true;
+              this.prevMove = this.lastMove;
               this.lastMove = "1";
               break;
             case player.lastMove === "2":
               this.positions[6] === true;
+              this.prevMove = this.lastMove;
               this.lastMove = "6";
               break;
             case player.lastMove === "6" || player.lastMove === "8":
               this.positions[2] = true;
+              this.prevMove = this.lastMove;
               this.lastMove = "2";
               break;
             default:
@@ -153,24 +193,35 @@ class AI {
             case (player.prevMove === "1" && player.lastMove === "2") ||
               (player.prevMove === "5" && player.lastMove === "6"):
               this.positions[0] = true;
+              this.prevMove = this.lastMove;
               this.lastMove = "0";
               break;
             case (player.prevMove === "1" && player.lastMove === "0") ||
               (player.prevMove === "3" && player.lastMove === "8"):
               this.positions[2] = true;
+              this.prevMove = this.lastMove;
               this.lastMove = "2";
               break;
             case (player.prevMove === "5" && player.lastMove === "0") ||
               (player.prevMove === "7" && player.lastMove === "8"):
               this.positions[6] = true;
+              this.prevMove = this.lastMove;
               this.lastMove = "6";
               break;
             case (player.prevMove === "3" && player.lastMove === "2") ||
               (player.prevMove === "7" && player.lastMove === "6"):
               this.positions[8] = true;
+              this.prevMove = this.lastMove;
               this.lastMove = "8";
               break;
             default:
+              if (!player.positions[0]) {
+                this.positions[0] = true;
+                this.lastMove = "0";
+              } else {
+                this.positions[2] = true;
+                this.lastMove = "2";
+              }
               break;
           }
         }
@@ -180,12 +231,33 @@ class AI {
           // Cases where AI's last move is at "X"
           case this.lastMove === "0":
             switch (true) {
+              case !player.positions[8]:
+                this.positions[8] = true;
+                this.prevMove = this.lastMove;
+                this.lastMove = "8";
+                this.won = true;
+              case player.lastMove === "8" && player.positions[3]:
+                this.positions[2] = true;
+                this.prevMove = this.lastMove;
+                this.lastMove = "2";
+                break;
+              case player.lastMove === "8" && player.positions[7]:
+                this.positions[6] = true;
+                this.prevMove = this.lastMove;
+                this.lastMove = "6";
+                break;
+              case player.positions[6] && player.positions[8]:
+                this.positions[7] = true;
+                this.lastMove = "7";
+                break;
               case player.lastMove === "8":
                 this.positions[3] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "3";
                 break;
               default:
                 this.positions[8] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "8";
                 this.won = true;
                 break;
@@ -193,16 +265,25 @@ class AI {
             break;
           case this.lastMove === "1":
             switch (true) {
+              case !player.positions[7]:
+                this.positions[7] = true;
+                this.prevMove = this.lastMove;
+                this.lastMove = "7";
+                this.won = true;
+                break;
               case player.lastMove === "7" && player.prevMove === "8":
                 this.positions[6] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "6";
                 break;
               case player.lastMove === "7":
                 this.positions[3] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "3";
                 break;
               default:
                 this.positions[7] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "7";
                 this.won = true;
                 break;
@@ -210,18 +291,28 @@ class AI {
             break;
           case this.lastMove === "2":
             switch (true) {
-              case player.lastMove === "6" &&
-                (player.prevMove === "1" || player.prevMove === "0"):
+              case !player.positions[6]:
+                this.positions[6] = true;
+                this.prevMove = this.lastMove;
+                this.lastMove = "6";
+                this.won = true;
+                break;
+              case (player.lastMove === "6" &&
+                (player.prevMove === "1" || player.prevMove === "0")) ||
+                (player.positions[0] && player.positions[3]):
                 this.positions[5] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "5";
                 break;
               case player.lastMove === "6" &&
                 (player.prevMove === "3" || player.prevMove === "8"):
                 this.positions[7] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "7";
                 break;
               default:
                 this.positions[6] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "6";
                 this.won = true;
                 break;
@@ -231,18 +322,22 @@ class AI {
             switch (true) {
               case player.lastMove === "7":
                 this.positions[1] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "1";
                 break;
               case player.lastMove === "1":
                 this.positions[7] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "7";
                 break;
               case player.lastMove === "2":
                 this.positions[6] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "6";
                 break;
               default:
                 this.positions[2] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "2";
                 break;
             }
@@ -251,12 +346,20 @@ class AI {
           //   break;
           case this.lastMove === "5":
             switch (true) {
+              case !player.positions[3]:
+                this.positions[3] = true;
+                this.prevMove = this.lastMove;
+                this.lastMove = "3";
+                this.won = true;
+                break;
               case player.lastMove === "6":
                 this.positions[2] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "2";
                 break;
               default:
                 this.positions[6] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "6";
                 this.won = true;
                 break;
@@ -265,27 +368,40 @@ class AI {
           case this.lastMove === "6":
             switch (true) {
               case player.lastMove === "2":
-                if (player.prevMove === "0" || player.prevMove === "5") {
+                if (player.positions[0] && player.positions[5]) {
                   this.positions[1] = true;
+                  this.prevMove = this.lastMove;
                   this.lastMove = "1";
-                } else if (player.prevMove === "7" || player.prevMove === "8") {
+                } else if (player.positions[7] && player.positions[8]) {
                   this.positions[3] = true;
+                  this.prevMove = this.lastMove;
+                  this.lastMove = "3";
+                } else if (!player.positions[5]) {
+                  this.positions[1] = true;
+                  this.prevMove = this.lastMove;
+                  this.lastMove = "1";
+                } else if (!player.positions[3]) {
+                  this.positions[3] = true;
+                  this.prevMove = this.lastMove;
                   this.lastMove = "3";
                 }
                 break;
               case player.lastMove === "5" &&
                 !(player.positions[5] || player.positions[7]):
                 this.positions[3] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "3";
                 break;
               case player.lastMove !== "2" &&
                 (player.positions[5] || player.positions[7]):
                 this.positions[2] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "2";
                 this.won = true;
                 break;
               case player.lastMove !== "5":
                 this.positions[5] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "5";
                 this.won = true;
                 break;
@@ -299,10 +415,12 @@ class AI {
                 switch (player.lastMove) {
                   case "1":
                     this.positions[3] = true;
+                    this.prevMove = this.lastMove;
                     this.lastMove = "3";
                     break;
                   default:
                     this.positions[1] = true;
+                    this.prevMove = this.lastMove;
                     this.lastMove = "1";
                     this.won = true;
                     break;
@@ -312,22 +430,27 @@ class AI {
                 switch (player.lastMove) {
                   case "2":
                     this.positions[6] = true;
+                    this.prevMove = this.lastMove;
                     this.lastMove = "6";
                     break;
                   case "3":
                     this.positions[5] = true;
+                    this.prevMove = this.lastMove;
                     this.lastMove = "5";
                     break;
                   case "5":
                     this.positions[3] = true;
+                    this.prevMove = this.lastMove;
                     this.lastMove = "3";
                     break;
                   case "6":
                     this.positions[2] = true;
+                    this.prevMove = this.lastMove;
                     this.lastMove = "2";
                     break;
                   default:
                     this.positions[6] = true;
+                    this.prevMove = this.lastMove;
                     this.lastMove = "6";
                     break;
                 }
@@ -336,22 +459,38 @@ class AI {
             break;
           case this.lastMove === "8":
             switch (player.lastMove) {
+              case !player.positions[0]:
+                this.positions[0] = true;
+                this.prevMove = this.lastMove;
+                this.lastMove = "0";
+                this.won = true;
+                break;
               case "0":
-                switch (player.prevMove) {
-                  case "2" || "3":
+                switch (true) {
+                  case player.positions[2] && player.positions[7]:
                     this.positions[1] = true;
+                    this.prevMove = this.lastMove;
                     this.lastMove = "1";
                     break;
-                  case "7" || "8":
+                  case player.prevMove === "7" ||
+                    player.prevMove === "6" ||
+                    (player.positions[6] && player.positions[0]):
                     this.positions[5] = true;
+                    this.prevMove = this.lastMove;
                     this.lastMove = "5";
                     break;
+                  case player.prevMove === "2" || player.prevMove === "3":
+                    this.positions[1] = true;
+                    this.prevMove = this.lastMove;
+                    this.lastMove = "1";
+                    console.log("2 || 3");
                   default:
                     break;
                 }
                 break;
               default:
                 this.positions[0] = true;
+                this.prevMove = this.lastMove;
                 this.lastMove = "0";
                 this.won = true;
                 break;
@@ -362,6 +501,24 @@ class AI {
         }
         break;
       case "4":
+        switch (this.lastMove) {
+          case "1":
+            break;
+          case "2":
+            break;
+          case "3":
+            break;
+          case "5":
+            break;
+          case "6":
+            break;
+          case "7":
+            break;
+          case "8":
+            break;
+          default:
+            break;
+        }
         break;
       case "5":
         break;
