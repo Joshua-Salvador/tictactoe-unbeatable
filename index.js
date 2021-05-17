@@ -13,48 +13,135 @@ const ai = new AI();
 
 box0.addEventListener("click", () => {
   console.log(`Testing Box ${box0.id}`);
-  player.selectBox(box0.id, ai);
-  ai.makeMove(player);
+  const playerBox = player.selectBox(box0.id, ai);
+  playerSelectBox(playerBox);
+  if (player.checkIfWin()) {
+    alert("Player has won");
+  }
+  const aiBox = ai.makeMove(player);
+  aiSelectBox(aiBox);
+  if (ai.won) {
+    alert("I won");
+    return;
+  }
 });
 box1.addEventListener("click", () => {
   console.log(`Testing Box ${box1.id}`);
-  player.selectBox(box1.id, ai);
-  ai.makeMove(player);
+  const playerBox = player.selectBox(box1.id, ai);
+  playerSelectBox(playerBox);
+  if (player.checkIfWin()) {
+    alert("Player has won");
+  }
+  const aiBox = ai.makeMove(player);
+  aiSelectBox(aiBox);
+  if (ai.won) {
+    alert("I won");
+    return;
+  }
 });
 box2.addEventListener("click", () => {
   console.log(`Testing Box ${box2.id}`);
-  player.selectBox(box2.id, ai);
-  ai.makeMove(player);
+  const playerBox = player.selectBox(box2.id, ai);
+  playerSelectBox(playerBox);
+  if (player.checkIfWin()) {
+    alert("Player has won");
+  }
+  const aiBox = ai.makeMove(player);
+  aiSelectBox(aiBox);
+  if (ai.won) {
+    alert("I won");
+    return;
+  }
 });
 box3.addEventListener("click", () => {
   console.log(`Testing Box ${box3.id}`);
-  player.selectBox(box3.id, ai);
-  ai.makeMove(player);
+  const playerBox = player.selectBox(box3.id, ai);
+  playerSelectBox(playerBox);
+  if (player.checkIfWin()) {
+    alert("Player has won");
+  }
+  const aiBox = ai.makeMove(player);
+  aiSelectBox(aiBox);
+  if (ai.won) {
+    alert("I won");
+    return;
+  }
 });
 box4.addEventListener("click", () => {
   console.log(`Testing Box ${box4.id}`);
-  player.selectBox(box4.id, ai);
-  ai.makeMove(player);
+  const playerBox = player.selectBox(box4.id, ai);
+  playerSelectBox(playerBox);
+  if (player.checkIfWin()) {
+    alert("Player has won");
+  }
+  const aiBox = ai.makeMove(player);
+  aiSelectBox(aiBox);
+  if (ai.won) {
+    alert("I won");
+    return;
+  }
 });
 box5.addEventListener("click", () => {
   console.log(`Testing Box ${box5.id}`);
-  player.selectBox(box5.id, ai);
-  ai.makeMove(player);
+  const playerBox = player.selectBox(box5.id, ai);
+  playerSelectBox(playerBox);
+  if (player.checkIfWin()) {
+    alert("Player has won");
+  }
+  const aiBox = ai.makeMove(player);
+  aiSelectBox(aiBox);
+  if (ai.won) {
+    alert("I won");
+    return;
+  }
 });
 box6.addEventListener("click", () => {
   console.log(`Testing Box ${box6.id}`);
-  player.selectBox(box6.id, ai);
-  ai.makeMove(player);
+  const playerBox = player.selectBox(box6.id, ai);
+  playerSelectBox(playerBox);
+  if (player.checkIfWin()) {
+    alert("Player has won");
+  }
+  const aiBox = ai.makeMove(player);
+  aiSelectBox(aiBox);
+  if (ai.won) {
+    alert("I won");
+    return;
+  }
 });
 box7.addEventListener("click", () => {
   console.log(`Testing Box ${box7.id}`);
-  player.selectBox(box7.id, ai);
-  ai.makeMove(player);
+  const playerBox = player.selectBox(box7.id, ai);
+  playerSelectBox(playerBox);
+  if (player.checkIfWin()) {
+    alert("Player has won");
+  }
+  const aiBox = ai.makeMove(player);
+  aiSelectBox(aiBox);
+  if (ai.won) {
+    alert("I won");
+    return;
+  }
 });
 box8.addEventListener("click", () => {
   console.log(`Testing Box ${box8.id}`);
-  player.selectBox(box8.id, ai);
-  ai.makeMove(player);
+  const playerBox = player.selectBox(box8.id, ai);
+  playerSelectBox(playerBox);
+  if (player.checkIfWin()) {
+    alert("Player has won");
+  }
+  const aiBox = ai.makeMove(player);
+  aiSelectBox(aiBox);
+  if (ai.won) {
+    alert("I won");
+    return;
+  }
 });
 
-function selectBox(boxId) {}
+function playerSelectBox(boxId) {
+  document.getElementById(boxId).innerHTML = "<span>X</span>";
+}
+
+function aiSelectBox(boxId) {
+  document.getElementById(boxId).innerHTML = "<span>O<span>";
+}
